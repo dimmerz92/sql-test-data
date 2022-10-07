@@ -100,7 +100,7 @@ for i, items in enumerate(loan.itertuples()):
     cursor.execute(insert)
     conn.commit()
     if newDateBack[i]:
-        update = f"UPDATE loan SET dateBack = '{newDateBack[i]}' WHERE clientId = {items[1]} AND ISBN = '{items[2]}' AND copyNumber = {items[3]} AND dateOut < '{items[5]}' AND dateBack IS NULL"
+        update = f"UPDATE loan SET dateBack = '{newDateBack[i]}' WHERE clientId = {items[1]} AND ISBN = '{items[2]}' AND copyNumber = {items[3]} AND dateOut < '{newDateBack[i]}' AND dateBack IS NULL"
         cursor.execute(update)
         conn.commit()
 

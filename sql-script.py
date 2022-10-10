@@ -38,12 +38,13 @@ residences = ["Como","Subiaco","Fremantle","Rockingham","Midland","Maylands","Jo
 ## SAMPLE DATA GENERATION ##
 # Create sample data for BookEdition
 isbn = [checkSum(n) for n in random.sample(range(1000,10000), 100)]
+titles = ["title" + str(n) for n in range(100)]
 author = [names.get_full_name() for n in range(100)]
 publicationDate = [random.randint(1900,2022) for n in range(100)]
 genre = [genreList[random.randint(0,len(genreList)-1)] for n in range(100)]
 
-BookEdition = pd.DataFrame(list(zip(isbn,author,publicationDate,genre)),
-                          columns=["ISBN","author","publicationDate","genre"])
+BookEdition = pd.DataFrame(list(zip(isbn,titles,author,publicationDate,genre)),
+                          columns=["ISBN","title","author","publicationDate","genre"])
 
 # Create sample data for BookCopy
 isbn_copy = [isbn[random.randint(0,len(isbn)-1)] for n in range(200)]
